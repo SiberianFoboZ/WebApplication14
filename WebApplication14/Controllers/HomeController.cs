@@ -32,7 +32,7 @@ namespace WebApplication14.Controllers
             return View();
         }
 
-        public IActionResult Userlist(string searchString)
+        public IActionResult UserList(string searchString)
         {
             ViewData["currentFilter"] = searchString;
 

@@ -68,7 +68,7 @@ namespace WebApplication14.Controllers
                 }
                 
             
-            return RedirectToAction("Contact", "Home");
+            return RedirectToAction("UserList", "Home");
         }
 
         [HttpPost]

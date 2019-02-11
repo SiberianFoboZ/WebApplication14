@@ -1,4 +1,4 @@
-﻿<script src="~/lib/jquery/dist/jquery.min.js"></script>
+﻿<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
 <script>
     function SaveData() {
         window.localStorage.setItem("Name", document.getElementById("aspName").nodeValue);
@@ -40,12 +40,24 @@
     </div>
     <div>
         <label asp-for="Pot"></label><br />
-        <input asp-for="Pot" id="aspPot" />
+                                     <select asp-for="Pot" id="aspPot">
+                                         <option>tea</option>
+                                         <option>Vodka</option>
+                                         <option>coffee</option>
+                                         <option>water</option>
+                                     </select>
+        
         <span asp-validation-for="Pot"></span>
     </div>
     <div>
         <label asp-for="Color"></label><br />
-        <input asp-for="Color" id="aspColor"/>
+        <select asp-for="Color" id="aspColor">
+<option>red</option>
+            <option>yellow</option>
+            <option>Blue</option>
+            <option>White</option>
+</select>
+        
         <span asp-validation-for="Color"></span>
     </div>
     <div>
