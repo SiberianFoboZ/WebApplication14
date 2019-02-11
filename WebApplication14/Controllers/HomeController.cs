@@ -5,16 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication14.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication14.Controllers
 {
+   //[Authorize(Roles ="admin")]
     public class HomeController : Controller
     {
+        //        [Authorize]
+
+        UserManager<User> _userManager;
+        public HomeController(UserManager<User> userManager)
+        {
+            _userManager = userManager;
+        }
         public IActionResult Index()
         {
             return View();
         }
-
+     //   [Authorize]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -22,12 +32,21 @@ namespace WebApplication14.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Userlist(string searchString)
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["currentFilter"] = searchString;
 
-            return View();
+            var user = from s in _userManager.Users
+                       select s;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                user = user.Where(s => s.Pot.Contains(searchString)
+                || s.Color.Contains(searchString));
+            }
+            return View(_userManager.Users.ToList());
         }
+
 
         public IActionResult Privacy()
         {

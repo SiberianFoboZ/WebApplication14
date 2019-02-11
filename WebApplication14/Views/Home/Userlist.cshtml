@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication14.Models.User>
+    @{
+        ViewBag.Title = "Список пользователей";
+    }
+
+    <a asp-action="Index">Добавить пользователя</a>
+
+        <form asp-action="Userlist" method="get">
+<div class="form-action no-color">
+    <p>
+        <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+</div>
+</form>
+
+    <table class="table">
+        <tr><th>Username</th><th>Dname</th><th>Number</th><th>Color</th><th>Pot</th></tr>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.DName</td>
+                <td>@user.PhoneNumber</td>
+                <td>@user.Color</td>
+                <td>@user.Pot</td>
+                <
+                
+            </tr>
+        }
+    </table>

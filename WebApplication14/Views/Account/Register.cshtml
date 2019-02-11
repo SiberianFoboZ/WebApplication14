@@ -1,0 +1,54 @@
+﻿<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function SaveData() {
+        window.localStorage.setItem("Name", document.getElementById("aspName").nodeValue);
+        window.localStorage.setItem("Dname", document.getElementById("aspDname").nodeValue);
+        window.localStorage.setItem("Color", document.getElementById("aspColor").nodeValue);
+        window.localStorage.setItem("Data", document.getElementById("aspDate").nodeValue);
+        window.localStorage.setItem("Pot", document.getElementById("aspPot").nodeValue);
+        window.localStorage.setItem("Number", document.getElementById("aspNumber").nodeValue);
+    }
+</script>
+
+@model WebApplication14.ViewModels.RegisterViewModels
+
+<h2>Регистрация нового пользователя</h2>
+
+
+
+<form method="post" asp-controller="Account" asp-action="Register">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="Name"></label><br />
+        <input asp-for="Name" id="aspName" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Dname"></label><br />
+        <input asp-for="Dname" id="aspDname" />
+        <span asp-validation-for="Dname"></span>
+    </div>
+    <div>
+        <label asp-for="Number"></label><br />
+        <input asp-for="Number" id="aspNumber" />
+        <span asp-validation-for="Number"></span>
+    </div>
+    <div>
+        <label asp-for="Date"></label><br />
+        <input type="date" asp-for="Date" id="aspDate"/>
+        <span asp-validation-for="Date"></span>
+    </div>
+    <div>
+        <label asp-for="Pot"></label><br />
+        <input asp-for="Pot" id="aspPot" />
+        <span asp-validation-for="Pot"></span>
+    </div>
+    <div>
+        <label asp-for="Color"></label><br />
+        <input asp-for="Color" id="aspColor"/>
+        <span asp-validation-for="Color"></span>
+    </div>
+    <div>
+        <input type="submit" value="Регистрация" />
+    </div>
+</form>
